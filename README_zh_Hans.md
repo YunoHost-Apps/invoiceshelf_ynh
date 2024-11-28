@@ -30,7 +30,6 @@ InvoiceShelf is an open-source web & mobile app that helps you track expenses, p
 
 - 官方应用网站： <https://invoiceshelf.com>
 - 官方用户文档： <https://docs.invoiceshelf.com/>
-- 官方管理文档： <https://docs.invoiceshelf.com/install/manual.html>
 - 上游应用代码库： <https://github.com/InvoiceShelf/InvoiceShelf>
 - YunoHost 商店： <https://apps.yunohost.org/app/invoiceshelf>
 - 报告 bug： <https://github.com/YunoHost-Apps/invoiceshelf_ynh/issues>

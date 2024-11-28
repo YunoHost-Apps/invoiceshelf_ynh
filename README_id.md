@@ -30,7 +30,6 @@ InvoiceShelf is an open-source web & mobile app that helps you track expenses, p
 
 - Website aplikasi resmi: <https://invoiceshelf.com>
 - Dokumentasi pengguna resmi: <https://docs.invoiceshelf.com/>
-- Dokumentasi admin resmi: <https://docs.invoiceshelf.com/install/manual.html>
 - Depot kode aplikasi hulu: <https://github.com/InvoiceShelf/InvoiceShelf>
 - Gudang YunoHost: <https://apps.yunohost.org/app/invoiceshelf>
 - Laporkan bug: <https://github.com/YunoHost-Apps/invoiceshelf_ynh/issues>
