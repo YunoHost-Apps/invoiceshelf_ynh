@@ -1,0 +1,67 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
+packaging_format = 2
+
+id = "invoiceshelf"
+name = "InvoiceShelf"
+description.en = "Invoicing Solution for Individuals & Businesses"
+description.fr = "Solution de facturation pour les particuliers et les entreprises"
+
+version = "2.0.0~ynh1"
+
+maintainers = [""]
+
+[upstream]
+license = "AGPL-3.0"
+website = "https://invoiceshelf.com"
+admindoc = "https://docs.invoiceshelf.com/install/manual.html"
+userdoc = "https://docs.invoiceshelf.com/"
+code = "https://github.com/InvoiceShelf/InvoiceShelf"
+
+[integration]
+yunohost = ">= 11.2.30"
+helpers_version = "2.1"
+architectures = "all"
+multi_instance = true
+
+ldap = false
+sso = false
+
+disk = "50M"
+ram.build = "50M"
+ram.runtime = "50M"
+
+[install]
+    [install.domain]
+    type = "domain"
+
+    [install.init_main_permission]
+    type = "group"
+    default = "visitors"
+
+[resources]
+
+    [resources.sources]
+
+    [resources.sources.main]
+    url = "https://github.com/InvoiceShelf/InvoiceShelf/releases/download/2.0.0/InvoiceShelf.zip"
+    sha256 = "976a1fb7492efa7fde6b0be93e3e18862a17ac7165b2e2dd37b8ff08145c5055"
+
+    # autoupdate.strategy = "latest_github_tag"
+
+    [resources.system_user]
+
+    [resources.install_dir]
+    group = "www-data:r-x"
+
+    [resources.data_dir]
+
+    [resources.permissions]
+    main.url = "/"
+
+    [resources.apt]
+
+    packages = "mariadb-server, redis-server, php8.2-pdo, php8.2-bcmath, php8.2-dom, php8.2-zip"
+
+    [resources.database]
+    type = "mysql"

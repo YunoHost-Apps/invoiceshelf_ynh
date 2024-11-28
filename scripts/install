@@ -1,0 +1,55 @@
+#!/bin/bash
+
+source _common.sh
+source /usr/share/yunohost/helpers
+
+#=================================================
+# DOWNLOAD, CHECK AND UNPACK SOURCE
+#=================================================
+ynh_script_progression "Setting up source files..."
+
+ynh_setup_source --dest_dir="$install_dir"
+
+chown -R "$app:www-data" "$install_dir"
+
+chmod -R 775 $install_dir/storage
+chmod -R 775 $install_dir/bootstrap/cache
+
+chown -R $app:www-data $install_dir/storage
+chown -R $app:www-data $install_dir/bootstrap/cache
+
+#=================================================
+# APP INITIAL CONFIGURATION
+#=================================================
+ynh_script_progression "Adding $app's configuration files..."
+
+ynh_config_add --template=".env" --destination="$install_dir/.env"
+
+chmod 400 "$install_dir/.env"
+chown "$app:$app" "$install_dir/.env"
+
+#=================================================
+# BUILDING
+#=================================================
+ynh_script_progression "configuring $app..."
+
+pushd "$install_dir"
+	"php$php_version" artisan key:generate -n
+popd
+
+#=================================================
+# SYSTEM CONFIGURATION
+#=================================================
+ynh_script_progression "Adding system configurations related to $app..."
+
+ynh_config_add_phpfpm
+
+ynh_config_add_nginx
+
+ynh_config_add_logrotate
+
+#=================================================
+# END OF SCRIPT
+#=================================================
+
+ynh_script_progression "Installation of $app completed"
