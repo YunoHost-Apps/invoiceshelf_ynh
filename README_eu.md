@@ -24,7 +24,7 @@ InvoiceShelf is an open-source web & mobile app that helps you track expenses, p
 
 ## Pantaila-argazkiak
 
-![InvoiceShelf(r)en pantaila-argazkia](./doc/screenshots/example.jpg)
+![InvoiceShelf(r)en pantaila-argazkia](./doc/screenshots/screenshot.png)
 
 ## Dokumentazioa eta baliabideak
 

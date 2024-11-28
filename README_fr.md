@@ -24,7 +24,7 @@ InvoiceShelf est une application Web et mobile open source qui vous aide à suiv
 
 ## Captures d’écran
 
-![Capture d’écran de InvoiceShelf](./doc/screenshots/example.jpg)
+![Capture d’écran de InvoiceShelf](./doc/screenshots/screenshot.png)
 
 ## Documentations et ressources
 
