@@ -31,7 +31,7 @@ chown "$app:$app" "$install_dir/.env"
 #=================================================
 # BUILDING
 #=================================================
-ynh_script_progression "configuring $app..."
+ynh_script_progression "Configuring $app..."
 
 pushd "$install_dir"
 	"php$php_version" artisan key:generate -n
