@@ -61,7 +61,7 @@ ram.runtime = "50M"
     main.url = "/"
 
     [resources.apt]
-    packages = "mariadb-server, redis-server, php8.2-pdo, php8.2-bcmath, php8.2-curl, php8.2-dom, php8.2-mbstring, php8.2-tokenizer, php8.2-zip, php8.2-xml, php8.2-json"
+    packages = "mariadb-server, redis-server, php8.2-pdo, php8.2-bcmath, php8.2-curl, php8.2-dom, php8.2-mbstring, php8.2-tokenizer, php8.2-zip, php8.2-xml, php8.2-json, php8.2-bcmath, php8.2-exif, php8.2-gd"
 
     [resources.database]
     type = "mysql"
