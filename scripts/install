@@ -46,8 +46,6 @@ ynh_config_add_phpfpm
 
 ynh_config_add_nginx
 
-ynh_config_add_logrotate
-
 #=================================================
 # END OF SCRIPT
 #=================================================
