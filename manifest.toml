@@ -47,7 +47,8 @@ ram.runtime = "50M"
     url = "https://github.com/InvoiceShelf/InvoiceShelf/releases/download/2.0.0/InvoiceShelf.zip"
     sha256 = "976a1fb7492efa7fde6b0be93e3e18862a17ac7165b2e2dd37b8ff08145c5055"
 
-    # autoupdate.strategy = "latest_github_tag"
+    autoupdate.strategy = "latest_github_release"
+    autoupdate.asset = "InvoiceShelf.zip"
 
     [resources.system_user]
 
