@@ -9,7 +9,7 @@ description.fr = "Solution de facturation pour les particuliers et les entrepris
 
 version = "2.0.0~ynh1"
 
-maintainers = [""]
+maintainers = []
 
 [upstream]
 license = "AGPL-3.0"
