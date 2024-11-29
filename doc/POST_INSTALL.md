@@ -27,5 +27,5 @@ So bear with us and:
     - Mail Port: `25`
     - Mail Encryption: `null`
     - From Mail Address: `no-reply@__DOMAIN__`
-    - From Mail Name: The name of your business
+    - From Mail Name: The name of your company
 - Now you just have to complete the forms with your company details
