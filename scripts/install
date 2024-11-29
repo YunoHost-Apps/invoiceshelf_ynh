@@ -32,6 +32,7 @@ ynh_script_progression "Configuring $app..."
 
 pushd "$install_dir"
 	"php$php_version" artisan key:generate -n
+	"php$php_version" artisan storage:link
 popd
 
 #=================================================

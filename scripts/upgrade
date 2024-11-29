@@ -15,6 +15,10 @@ chown -R "$app:www-data" "$install_dir"
 chmod -R 775 "$install_dir/storage"
 chmod -R 775 "$install_dir/bootstrap/cache"
 
+pushd "$install_dir"
+	"php$php_version" artisan storage:link
+popd
+
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
 #=================================================
