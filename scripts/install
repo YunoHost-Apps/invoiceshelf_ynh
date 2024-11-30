@@ -10,10 +10,13 @@ ynh_script_progression "Setting up source files..."
 
 ynh_setup_source --dest_dir="$install_dir"
 
+mkdir -p "$install_dir/Modules"
+
 chown -R "$app:www-data" "$install_dir"
 
 chmod -R 775 "$install_dir/storage"
 chmod -R 775 "$install_dir/bootstrap/cache"
+chmod -R 775 "$install_dir/Modules"
 
 #=================================================
 # APP INITIAL CONFIGURATION
