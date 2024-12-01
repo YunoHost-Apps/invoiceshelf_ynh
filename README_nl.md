@@ -24,13 +24,12 @@ InvoiceShelf is an open-source web & mobile app that helps you track expenses, p
 
 ## Schermafdrukken
 
-![Schermafdrukken van InvoiceShelf](./doc/screenshots/example.jpg)
+![Schermafdrukken van InvoiceShelf](./doc/screenshots/screenshot.png)
 
 ## Documentatie en bronnen
 
 - Officiele website van de app: <https://invoiceshelf.com>
 - Officiele gebruikersdocumentatie: <https://docs.invoiceshelf.com/>
-- Officiele beheerdersdocumentatie: <https://docs.invoiceshelf.com/install/manual.html>
 - Upstream app codedepot: <https://github.com/InvoiceShelf/InvoiceShelf>
 - YunoHost-store: <https://apps.yunohost.org/app/invoiceshelf>
 - Meld een bug: <https://github.com/YunoHost-Apps/invoiceshelf_ynh/issues>
