@@ -43,8 +43,8 @@ ram.runtime = "50M"
     [resources.sources]
 
     [resources.sources.main]
-    url = "https://github.com/InvoiceShelf/InvoiceShelf/archive/c466d51fe01c2a1aad9bbd0da5b9bd1899b2010b.zip"
-    sha256 = "51cc0c9f5ae342446e1112accfce40a5a420b422cbc930c3c3157bb547dd3df6"
+    url = "https://github.com/InvoiceShelf/InvoiceShelf/releases/download/2.0.0/InvoiceShelf.zip"
+    sha256 = "976a1fb7492efa7fde6b0be93e3e18862a17ac7165b2e2dd37b8ff08145c5055"
 
     autoupdate.strategy = "latest_github_release"
     autoupdate.asset = "InvoiceShelf.zip"
