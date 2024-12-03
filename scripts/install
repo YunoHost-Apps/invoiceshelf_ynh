@@ -10,13 +10,13 @@ ynh_script_progression "Setting up source files..."
 
 ynh_setup_source --dest_dir="$install_dir"
 
+mkdir -p "$install_dir/Modules"
+
 chown -R "$app:www-data" "$install_dir"
 
-chmod -R 775 $install_dir/storage
-chmod -R 775 $install_dir/bootstrap/cache
-
-chown -R $app:www-data $install_dir/storage
-chown -R $app:www-data $install_dir/bootstrap/cache
+chmod -R 775 "$install_dir/storage"
+chmod -R 775 "$install_dir/bootstrap/cache"
+chmod -R 775 "$install_dir/Modules"
 
 #=================================================
 # APP INITIAL CONFIGURATION
@@ -25,16 +25,20 @@ ynh_script_progression "Adding $app's configuration files..."
 
 ynh_config_add --template=".env" --destination="$install_dir/.env"
 
-chmod 400 "$install_dir/.env"
+chmod 700 "$install_dir/.env"
 chown "$app:$app" "$install_dir/.env"
 
 #=================================================
 # BUILDING
 #=================================================
-ynh_script_progression "configuring $app..."
+ynh_script_progression "Configuring $app..."
 
 pushd "$install_dir"
-	"php$php_version" artisan key:generate -n
+	"php$php_version" artisan key:generate --no-interaction --force
+	"php$php_version" artisan view:clear
+	"php$php_version" artisan cache:clear
+	"php$php_version" artisan optimize --no-interaction
+	"php$php_version" artisan storage:link
 popd
 
 #=================================================
@@ -46,7 +50,22 @@ ynh_config_add_phpfpm
 
 ynh_config_add_nginx
 
-ynh_config_add_logrotate
+ynh_config_add --template="cron" --destination="/etc/cron.d/$app"
+
+#=================================================
+# SETUP LOGROTATE
+#=================================================
+ynh_script_progression "Configuring log rotation..."
+
+ynh_config_add_logrotate "$install_dir/storage/logs/laravel.log"
+chmod -R 775 "$install_dir/storage/logs"
+
+#=================================================
+# SETUP FAIL2BAN
+#=================================================
+ynh_script_progression "Configuring fail2ban..."
+
+ynh_config_add_fail2ban --logpath="/var/log/nginx/$domain-access.log" --failregex="<HOST> .* \"(GET|POST) (/api/|/login).*\" (401|422)"
 
 #=================================================
 # END OF SCRIPT
