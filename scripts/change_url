@@ -11,6 +11,15 @@ ynh_script_progression "Updating NGINX web server configuration..."
 ynh_config_change_url_nginx
 
 #=================================================
+# MODIFY URL IN APP CONF
+#=================================================
+ynh_script_progression "Updating $app configuration..."
+
+ynh_write_var_in_file --file="$install_dir/.env" --key="APP_URL" --value="https://$domain"
+ynh_write_var_in_file --file="$install_dir/.env" --key="SESSION_DOMAIN" --value="$domain"
+ynh_write_var_in_file --file="$install_dir/.env" --key="SANCTUM_STATEFUL_DOMAINS" --value="$domain"
+
+#=================================================
 # END OF SCRIPT
 #=================================================
 
