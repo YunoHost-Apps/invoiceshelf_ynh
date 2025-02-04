@@ -7,9 +7,9 @@ name = "InvoiceShelf"
 description.en = "Invoicing Solution for Individuals & Businesses"
 description.fr = "Solution de facturation pour les particuliers et les entreprises"
 
-version = "2.0.0~ynh1"
+version = "2.1.0~ynh1"
 
-maintainers = []
+maintainers = [ "OniriCorpe" ]
 
 [upstream]
 license = "AGPL-3.0"
@@ -43,8 +43,8 @@ ram.runtime = "50M"
     [resources.sources]
 
     [resources.sources.main]
-    url = "https://github.com/InvoiceShelf/InvoiceShelf/releases/download/2.0.0/InvoiceShelf.zip"
-    sha256 = "976a1fb7492efa7fde6b0be93e3e18862a17ac7165b2e2dd37b8ff08145c5055"
+    url = "https://github.com/InvoiceShelf/InvoiceShelf/releases/download/2.1.0/InvoiceShelf.zip"
+    sha256 = "c857f76bc932af1a2b63ea858c3ad0ff293629c9dceedf666c9c2f6252ea0ab2"
 
     autoupdate.strategy = "latest_github_release"
     autoupdate.asset = "InvoiceShelf.zip"
