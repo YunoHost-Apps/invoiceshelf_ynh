@@ -8,19 +8,19 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
-ynh_setup_source --dest_dir="$install_dir" --full_replace --keep=".env"
+ynh_setup_source --dest_dir="$install_dir" --full_replace --keep=".env storage Modules"
 
 chown -R "$app:www-data" "$install_dir"
 
-#=================================================
-# UPDATE A CONFIG FILE
-#=================================================
-ynh_script_progression "Updating $app's configuration files..."
+chmod -R 775 "$install_dir/storage"
+chmod -R 775 "$install_dir/bootstrap/cache"
 
-ynh_config_add --template="some_config_file" --destination="$install_dir/some_config_file"
-
-chmod 400 "$install_dir/some_config_file"
-chown "$app:$app" "$install_dir/some_config_file"
+pushd "$install_dir"
+	"php$php_version" artisan view:clear
+	"php$php_version" artisan cache:clear
+    "php$php_version" artisan optimize --no-interaction --verbose 2>&1
+	"php$php_version" artisan storage:link
+popd
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
@@ -30,6 +30,22 @@ ynh_script_progression "Upgrading system configurations related to $app..."
 ynh_config_add_phpfpm
 
 ynh_config_add_nginx
+
+ynh_config_add --template="cron" --destination="/etc/cron.d/$app"
+
+#=================================================
+# SETUP LOGROTATE
+#=================================================
+ynh_script_progression "Configuring log rotation..."
+
+ynh_config_add_logrotate "$install_dir/storage/logs/laravel.log"
+
+#=================================================
+# SETUP FAIL2BAN
+#=================================================
+ynh_script_progression "Configuring fail2ban..."
+
+ynh_config_add_fail2ban --logpath="/var/log/nginx/$domain-access.log" --failregex="<HOST> .* \"(GET|POST) (/api/|/login).*\" (401|422)"
 
 #=================================================
 # END OF SCRIPT

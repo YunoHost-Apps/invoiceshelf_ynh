@@ -13,21 +13,11 @@ ynh_restore "$install_dir"
 chown -R "$app:www-data" "$install_dir"
 
 #=================================================
-# RESTORE THE DATA DIRECTORY
+# RESTORE THE DATABASE
 #=================================================
-ynh_script_progression "Restoring the data directory..."
+ynh_script_progression "Restoring the PostgresSQL database..."
 
-ynh_restore "$data_dir"
-
-### (Same as for install dir)
-chown -R "$app:www-data" "$data_dir"
-
-#=================================================
-# RESTORE THE MYSQL DATABASE
-#=================================================
-ynh_script_progression "Restoring the MySQL database..."
-
-ynh_mysql_db_shell < ./db.sql
+ynh_psql_db_shell < ./db.sql
 
 #=================================================
 # RESTORE SYSTEM CONFIGURATIONS
@@ -37,6 +27,8 @@ ynh_script_progression "Restoring system configurations related to $app..."
 ynh_restore "/etc/php/$php_version/fpm/pool.d/$app.conf"
 
 ynh_restore "/etc/nginx/conf.d/$domain.d/$app.conf"
+
+ynh_restore "/etc/cron.d/$app"
 
 #=================================================
 # RELOAD NGINX AND PHP-FPM OR THE APP SERVICE
