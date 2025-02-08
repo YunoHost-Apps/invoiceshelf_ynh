@@ -1,13 +1,23 @@
 #!/bin/bash
 
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
 source _common.sh
 source /usr/share/yunohost/helpers
+
+#=================================================
+# ENSURE DOWNWARD COMPATIBILITY
+#=================================================
+ynh_script_progression "Ensuring downward compatibility..."
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
+# Download, check integrity, uncompress and patch the source from manifest.toml
 ynh_setup_source --dest_dir="$install_dir" --full_replace --keep=".env storage Modules"
 
 chown -R "$app:www-data" "$install_dir"
@@ -33,17 +43,7 @@ ynh_config_add_nginx
 
 ynh_config_add --template="cron" --destination="/etc/cron.d/$app"
 
-#=================================================
-# SETUP LOGROTATE
-#=================================================
-ynh_script_progression "Configuring log rotation..."
-
 ynh_config_add_logrotate "$install_dir/storage/logs/laravel.log"
-
-#=================================================
-# SETUP FAIL2BAN
-#=================================================
-ynh_script_progression "Configuring fail2ban..."
 
 ynh_config_add_fail2ban --logpath="/var/log/nginx/$domain-access.log" --failregex="<HOST> .* \"(GET|POST) (/api/|/login).*\" (401|422)"
 
