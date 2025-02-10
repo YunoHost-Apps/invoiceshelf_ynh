@@ -23,7 +23,7 @@ InvoiceShelf est une application Web et mobile open source qui vous aide à suiv
 ⚠️ Note : Vous devrez faire un peu de configuration à la main. Mais ne vous inquiétez pas, un message sera affiché à la fin de l'installation pour vous guider pas à pas !
 
 
-**Version incluse :** 2.1.0~ynh2
+**Version incluse :** 2.1.1~ynh1
 
 ## Captures d’écran
 
