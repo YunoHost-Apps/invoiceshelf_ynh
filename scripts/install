@@ -46,6 +46,7 @@ pushd "$install_dir"
 	sudo -u "$app" "php$php_version" artisan key:generate --no-interaction --force
 	sudo -u "$app" "php$php_version" artisan optimize --no-interaction
 	sudo -u "$app" "php$php_version" artisan storage:link
+	chown -R "$app:www-data" "$install_dir/bootstrap"
 popd
 
 #=================================================
