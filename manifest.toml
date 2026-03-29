@@ -7,7 +7,7 @@ name = "InvoiceShelf"
 description.en = "Invoicing Solution for Individuals & Businesses"
 description.fr = "Solution de facturation pour les particuliers et les entreprises"
 
-version = "2.1.1~ynh2"
+version = "2.2.1~ynh1"
 
 maintainers = [ "OniriCorpe" ]
 
@@ -44,8 +44,8 @@ ram.runtime = "50M"
     [resources.sources]
 
     [resources.sources.main]
-    url = "https://github.com/InvoiceShelf/InvoiceShelf/releases/download/2.1.1/InvoiceShelf.zip"
-    sha256 = "16d5a16f2c342d08d4cdc0272d40a415a0ffaab2aaa38ddc7c8efdeb3ee15aef"
+    url = "https://github.com/InvoiceShelf/InvoiceShelf/releases/download/2.2.1/InvoiceShelf.zip"
+    sha256 = "3b8611572040ce6bacd8f1a8be5effc051f685774686436ec772674c74e7f45d"
 
     autoupdate.strategy = "latest_github_release"
     autoupdate.asset = "InvoiceShelf.zip"
@@ -64,7 +64,7 @@ ram.runtime = "50M"
     api.auth_header = true
 
     [resources.apt]
-    packages = "postgresql, postgresql-contrib, redis-server, php8.3-pgsql, php8.3-bcmath, php8.3-curl, php8.3-dom, php8.3-mbstring, php8.3-tokenizer, php8.3-zip, php8.3-xml, php8.3-json, php8.3-exif, php8.3-gd, php8.3-pdo"
+    packages = "postgresql, postgresql-contrib, redis-server, php8.4-pgsql, php8.4-bcmath, php8.4-curl, php8.4-dom, php8.4-mbstring, php8.4-tokenizer, php8.4-zip, php8.4-xml, php8.4-json, php8.4-exif, php8.4-gd, php8.4-pdo"
 
     [resources.database]
     type = "postgresql"
