@@ -4,7 +4,7 @@
 # IMPORT GENERIC HELPERS
 #=================================================
 
-source _common.sh
+
 source /usr/share/yunohost/helpers
 
 #=================================================
@@ -26,10 +26,11 @@ chmod -R 775 "$install_dir/storage"
 chmod -R 775 "$install_dir/bootstrap/cache"
 
 pushd "$install_dir"
-	"php$php_version" artisan view:clear
-	"php$php_version" artisan cache:clear
-    "php$php_version" artisan optimize --no-interaction --verbose 2>&1
-	"php$php_version" artisan storage:link
+	sudo -u "$app" "php$php_version" artisan view:clear
+	chown -R "$app:www-data" "$install_dir/bootstrap"
+    sudo -u "$app" "php$php_version" artisan optimize --no-interaction --verbose 2>&1
+	sudo -u "$app" "php$php_version" artisan storage:link
+	chown -R "$app:www-data" "$install_dir/bootstrap"
 popd
 
 #=================================================
