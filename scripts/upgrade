@@ -22,12 +22,16 @@ ynh_setup_source --dest_dir="$install_dir" --full_replace --keep=".env storage M
 
 chown -R "$app:www-data" "$install_dir"
 
+mkdir -p framework/{sessions,views,cache}
+
 chmod -R 775 "$install_dir/storage"
+chmod -R 775 "$install_dir/framework"
 chmod -R 775 "$install_dir/bootstrap/cache"
 
 pushd "$install_dir"
 	sudo -u "$app" "php$php_version" artisan view:clear
 	chown -R "$app:www-data" "$install_dir/bootstrap"
+	"php$php_version" artisan cache:clear
     sudo -u "$app" "php$php_version" artisan optimize --no-interaction --verbose 2>&1
 	sudo -u "$app" "php$php_version" artisan storage:link
 	chown -R "$app:www-data" "$install_dir/bootstrap"
